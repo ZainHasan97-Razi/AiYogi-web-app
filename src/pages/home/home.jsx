@@ -1,5 +1,6 @@
 import React from 'react';
 import backgroundImage from '../../assets/images/homebackground.png'; // Import the image
+import Navbar from './components/navbar';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         className="h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
+        <Navbar/>
         <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
           <h1 className="text-white text-4xl font-bold">Welcome to My App</h1>
         </div>
