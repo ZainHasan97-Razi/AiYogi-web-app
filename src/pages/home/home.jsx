@@ -2,6 +2,8 @@ import React from "react";
 import backgroundImage from "../../assets/images/homebackground.png"; // Import the image
 import Navbar from "./components/navbar";
 import ScrollingAvatars from "./components/scrollingAvatars";
+import Feature from "./components/Feature";
+import Advantages from "./components/Advantages";
 
 const Home = () => {
   return (
@@ -24,6 +26,9 @@ const Home = () => {
         <p className="text-gray-700">
           This content is outside the background image and will scroll normally.
         </p>
+
+        <Feature/>
+        <Advantages/>
         {/* Add more components here */}
       </div>
     </div>
