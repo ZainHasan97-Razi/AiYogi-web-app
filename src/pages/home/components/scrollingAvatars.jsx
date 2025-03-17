@@ -52,17 +52,17 @@ const dummyData = [
   },
 ];
 
-const ScrollingAvatars = () => {
+const ScrollingAvatars = ({data=[]}) => {
   return (
     <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap">
-      {dummyData.map((item, index) => (
+      {data.map((item, index) => (
         <div
           key={index}
           className="flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
           onClick={() => console.log(`Clicked image ${index}`)}
         >
           <img
-            src={item.img}
+            src={item.bannerImageUrl}
             alt={`Avatar ${index}`}
             className="w-full h-full object-cover rounded-lg"
           />
