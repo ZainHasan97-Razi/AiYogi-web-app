@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import ScrollingAvatars from "./components/scrollingAvatars";
 import Feature from "./components/Feature";
 import Advantages from "./components/Advantages";
+import BeginnerPath from "./components/BeginnerPath";
 
 import { useQuery } from "@tanstack/react-query";
 import { moduleTending } from "./home.api";
@@ -48,6 +49,7 @@ const Home = () => {
 
         <Feature />
         <Advantages />
+        <BeginnerPath/>
         {/* Add more components here */}
       </div>
     </div>
