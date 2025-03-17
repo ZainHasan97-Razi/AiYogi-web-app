@@ -55,7 +55,7 @@ const dummyData = [
 const ScrollingAvatars = ({data=[]}) => {
   return (
     <>
-      <div className="absolute bottom-0 left-0 right-0 overflow-x-auto">
+      <div className="absolute bottom-0 left-0 right-0 overflow-x-auto translate-y-1/2">
         {/* Left Gradient Overlay */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-themeblack to-transparent pointer-events-none"></div>
 
@@ -66,7 +66,7 @@ const ScrollingAvatars = ({data=[]}) => {
           {dummyData.map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
+              className="flex-shrink-0 w-40 h-40 m-4 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
               onClick={() => console.log(`Clicked image ${index}`)}
             >
               <img
