@@ -16,6 +16,8 @@ const Home = () => {
     queryFn: moduleTending,
   })
 
+  // console.log(data?.data?.modules);
+
   return (
     <div className="bg-themeblack">
       {/* Background Image Section */}
