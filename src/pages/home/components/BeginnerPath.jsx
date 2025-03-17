@@ -68,7 +68,7 @@ const BeginnerPath = () => {
           {dummyData.map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-40 h-40 mx-2 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
+              className="flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
               onClick={() => console.log(`Clicked image ${index}`)}
             >
               <img
