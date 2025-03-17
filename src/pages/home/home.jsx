@@ -5,7 +5,7 @@ import ScrollingAvatars from "./components/scrollingAvatars";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-themeblack">
       {/* Background Image Section */}
       <div
         className="h-screen bg-cover bg-center"
@@ -15,7 +15,7 @@ const Home = () => {
         <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
           {/* <h1 className="text-white text-4xl font-bold">Welcome to My App</h1> */}
         </div>
-        <ScrollingAvatars />
+        {/* <ScrollingAvatars /> */}
       </div>
 
       {/* Other Components */}

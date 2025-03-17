@@ -12,7 +12,7 @@ module.exports = {
         info: "#17a2b8",
         light: "#f8f9fa",
         dark: "#343a40",
-        theme: "rgba(0, 0, 0, 0.8)",
+        themeblack: "#000000",
       },
     },
   },
