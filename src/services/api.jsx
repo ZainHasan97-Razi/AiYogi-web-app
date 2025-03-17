@@ -1,12 +1,10 @@
-const BASEURL = process.env
 import axios from "axios"
-
-const apiCall = axios.create({url: process.env.REACT_APP_API_URL});
+const BASEURL = process.env.REACT_APP_API_URL;
 
 export const get = (url) => {
-    return apiCall.get(url)
+    return axios.get(url)
 }
 
 export const post = (endpoint, data) => {
-    return apiCall.post(endpoint, data);
+    return axios.post(`${BASEURL}${endpoint}`, data);
 }
