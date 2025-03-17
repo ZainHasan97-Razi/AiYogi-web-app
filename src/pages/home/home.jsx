@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundImage from "../../assets/images/homebackground2.jpeg"; // Import the image
+import backgroundImage from "../../assets/images/homebackground.png"; // Import the image
 import Navbar from "./components/navbar";
 import ScrollingAvatars from "./components/scrollingAvatars";
 
