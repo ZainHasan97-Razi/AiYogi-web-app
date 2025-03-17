@@ -6,9 +6,19 @@ import Feature from "./components/Feature";
 import Advantages from "./components/Advantages";
 import BeginnerPath from "./components/BeginnerPath";
 
+import { useQuery } from "@tanstack/react-query";
+import { moduleTending } from "./home.api";
+
 const Home = () => {
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['moduleTending'],
+    queryFn: moduleTending,
+  })
+
   return (
     <div className="bg-themeblack">
+      {/* {data.data} */}
       {/* Background Image Section */}
       <div
         className="h-screen bg-cover bg-center relative"

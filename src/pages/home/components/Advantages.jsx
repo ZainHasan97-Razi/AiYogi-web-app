@@ -9,8 +9,8 @@ const Advantages = () => {
         {/* First Section */}
         <div className="flex flex-col md:flex-row items-center mb-20">
           <div className="md:w-1/2">
-            <h3 className="text-red-500 uppercase">Advantages</h3>
-            <h2 className="text-3xl font-bold">Customize According To You</h2>
+            <h3 className="text-textred  uppercase">Advantages</h3>
+            <h2 className="text-textwhite text-[48px] font-light font-bold">Customize According To You</h2>
             <p className="mt-4 text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique.
             </p>
@@ -23,7 +23,7 @@ const Advantages = () => {
             <img
               src={feature2}
               alt="Mobile Preview"
-              className="w-64 rounded-lg"
+              className="w-3xl rounded-lg"
             />
           </div>
         </div>
@@ -31,8 +31,8 @@ const Advantages = () => {
         {/* Second Section */}
         <div className="flex flex-col md:flex-row-reverse items-center">
           <div className="md:w-1/2">
-            <h3 className="text-red-500 uppercase">Advantages</h3>
-            <h2 className="text-3xl font-bold">Join Module</h2>
+            <h3 className="text-textred uppercase">Advantages</h3>
+            <h2 className="text-textwhite text-[48px] font-light font-bold">Join Module</h2>
             <p className="mt-4 text-gray-400">
               All content in one place. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
@@ -41,7 +41,7 @@ const Advantages = () => {
             <img
               src={feature3}
               alt="Mobile Preview"
-              className="w-64 rounded-lg"
+              className="w-3xl rounded-lg"
             />
           </div>
         </div>
