@@ -7,16 +7,21 @@ import Advantages from "./components/Advantages";
 import BeginnerPath from "./components/BeginnerPath";
 
 import { useQuery } from "@tanstack/react-query";
-import { moduleTending } from "./home.api";
+import { moduleTending, moduleFeatured } from "./home.api";
 
 const Home = () => {
 
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data: trendingData, error } = useQuery({
     queryKey: ['moduleTending'],
     queryFn: moduleTending,
   })
 
-  // console.log(data?.data?.modules);
+  const { data: moduleFeaturedData } = useQuery({
+    queryKey: ['moduleFeatured'],
+    queryFn: moduleFeatured,
+  })
+
+  // console.log(moduleFeaturedData?.data);
 
   return (
     <div className="bg-themeblack">
@@ -26,14 +31,14 @@ const Home = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
-        <ScrollingAvatars />
+        <ScrollingAvatars data={trendingData?.data?.modules || []} />
       </div>
 
       {/* Other Components */}
       <div className="p-8">
         <Feature />
         <Advantages />
-        <BeginnerPath/>
+        <BeginnerPath data={moduleFeaturedData?.data?.modules || []}/>
         {/* Add more components here */}
       </div>
     </div>

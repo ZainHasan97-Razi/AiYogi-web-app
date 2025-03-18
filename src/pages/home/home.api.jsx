@@ -9,7 +9,7 @@ const ENDPOINTS = {
 }
 
 export const moduleTending = () => {
-   return post(`/${ENDPOINTS.modules_featured}`)
+   return post(`/${ENDPOINTS.modules_tending}`)
 } 
 export const moduleSearch = (data) => {
    return post(`/${ENDPOINTS.modules_search}`, data)
