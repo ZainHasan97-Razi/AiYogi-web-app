@@ -62,7 +62,7 @@ const ScrollingAvatars = ({data=[], callback}) => {
         {/* Right Gradient Overlay */}
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-themeblack to-transparent pointer-events-none"></div>
         
-        <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap">
+        {/* <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap">
           {data.map((item, index) => (
             <div
               key={index}
@@ -76,7 +76,26 @@ const ScrollingAvatars = ({data=[], callback}) => {
               />
             </div>
           ))}
+        </div> */}
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="head-slide-list">
+            {data.map((item, index) => (item?.bannerImageUrl ? 
+              <div
+                key={index}
+                className="head-slide-item"
+                onClick={() => callback(item)}
+              >
+                  <img
+                    src={item.bannerImageUrl}
+                    alt={`Avatar ${index}`}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+              </div>
+            : ''))}
+          </div>
         </div>
+
       </div>
     </>
   );

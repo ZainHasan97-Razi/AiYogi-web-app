@@ -37,7 +37,7 @@ const Home = () => {
     <div className="bg-themeblack">
       {/* Background Image Section */}
       <div
-        className="h-screen bg-cover bg-center relative"
+        className="h-screen bg-cover bg-center relative mb-20"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
@@ -47,7 +47,7 @@ const Home = () => {
       </div>
 
       {/* Other Components */}
-      <div className="p-8">
+      <div className="p-8 pt-20">
         <Feature />
         <Advantages />
         <BeginnerPath data={moduleFeaturedData?.data?.modules || []} callback={onClickItem}/>
