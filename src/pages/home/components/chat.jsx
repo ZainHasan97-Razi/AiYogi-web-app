@@ -1,29 +1,9 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { ENDPOINTS, moduleConverseStream } from "../home.api";
+import { moduleConverseStream } from "../home.api";
 import { v7 as uuidv7 } from 'uuid';
-import { stream } from "../../../services/api";
 
-
-export const useStreamQuery = ({moduleId, threadId, message, enabled}) => {
-  return useQuery({
-    queryKey: ["stream"],
-    queryFn: ()=>{
-           const payload = {
-        "moduleId": moduleId,
-        "threadId": threadId,
-        "message": message,
-        "Stream": true
-      }
-      // return moduleConverseStream(payload)
-    },
-    enabled,
-    staleTime: Infinity, // Avoid refetching
-    refetchOnWindowFocus: false,
-    cacheTime: 0, // Prevent caching since it's a live stream
-  });
-};
 
 const Chat = () => {
   const { state } = useLocation();
@@ -47,9 +27,12 @@ const Chat = () => {
 });
 
   const onConverStart = () => {
-    setMessages(prev => [...prev, ]);
+
+    setMessages(prev => [...prev, { type: "question", text:  input }]);
     converseMutation.mutate()
   }
+
+  
 
   useEffect(() => {
     if(converseMutation.data && JSON.parse(converseMutation.data)) {
@@ -60,6 +43,7 @@ const Chat = () => {
     }
 
   }, [converseMutation.data])
+
 
   return (
     <div className="bg-gradient-to-b from-black to-gray-900 text-white min-h-screen flex items-center justify-center">
@@ -91,13 +75,18 @@ const Chat = () => {
         <div className="flex items-center border border-yellow-500 p-3 rounded-lg max-w-lg mx-auto mb-4">
           <input 
             onChange={(e)=> setInput(e.target.value)}
-            type="text" 
+            type="text"
+            value={input || ""}
             placeholder="Enter questions" 
             className="bg-transparent w-full outline-none text-white" 
           />
         </div>
-        <button onClick={()=> onConverStart()} className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-200">
-          Submit →
+        <button disabled={converseMutation.isPending} onClick={()=> onConverStart()} className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-200">
+        {converseMutation.isPending ? (
+            <div className="animate-spin border-t-2 border-b-2 border-gray-900 rounded-full w-5 h-5"></div>
+          ) : (
+            "Submit →"
+          )}
         </button>
       </div>
     </div>
