@@ -52,7 +52,7 @@ const dummyData = [
   },
 ];
 
-const BeginnerPath = ({data}) => {
+const BeginnerPath = ({data, callback}) => {
   return (
     <>
       <p className="text-textwhite text-center m-2 font-bold">BEGINNER'S PATH</p>
@@ -69,7 +69,7 @@ const BeginnerPath = ({data}) => {
             <div
               key={index}
               className="flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
-              onClick={() => console.log(`Clicked image ${index}`)}
+              onClick={() => callback(item)}
             >
               <img
                 src={item.bannerImageUrl}

@@ -52,7 +52,7 @@ const dummyData = [
   },
 ];
 
-const ScrollingAvatars = ({data=[]}) => {
+const ScrollingAvatars = ({data=[], callback}) => {
   return (
     <>
       <div className="absolute bottom-0 left-0 right-0 overflow-x-auto translate-y-1/2">
@@ -67,7 +67,7 @@ const ScrollingAvatars = ({data=[]}) => {
             <div
               key={index}
               className="flex-shrink-0 w-40 h-40 m-4 cursor-pointer hover:opacity-80 transition-transform duration-200 hover:scale-110"
-              onClick={() => console.log(`Clicked image ${index}`)}
+              onClick={() => callback(item)}
             >
               <img
                 src={item.bannerImageUrl}
