@@ -1,6 +1,6 @@
-import { post } from "../../services/api";
+import { post, stream } from "../../services/api";
 
-const ENDPOINTS = {
+export const ENDPOINTS = {
     modules_tending: "modules/trending",
     modules_search: "modules/search",
     public_converse: "public/converse",
@@ -23,12 +23,25 @@ export const moduleFeatured = () => {
 } 
 
 export const moduleConverse = (data) => {
-    const payload = {
-        ...data,
-        "moduleId": "hloo2123",
-        "threadId": "23424",
-        "message": "how to handle",
-        "Stream": true
+   return post(`/${ENDPOINTS.public_converse}`, data)
+}
+
+export const moduleConverseStream = async (payload) => {
+  const  headers = {
+      Accept: 'text/event-stream',
+      'Cache-Control': 'no-cache',
     }
-   return post(`/${ENDPOINTS.modules_justreleased}`, {data: payload})
+   const responseStream = await stream(`/${ENDPOINTS.public_converse}`, payload, headers);
+   const reader = responseStream.getReader();
+
+   return new Promise(async (resolve) => {
+      let fullMessage = "";
+      while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            fullMessage += value;
+            console.log("Chunk received:", value); // Stream updates in real time
+      }
+      resolve(fullMessage);
+   });
 } 

@@ -5,6 +5,32 @@ export const get = (url) => {
     return axios.get(url)
 }
 
-export const post = (endpoint, data) => {
-    return axios.post(`${BASEURL}${endpoint}`, data);
+export const post = (endpoint, data, headers) => {
+    return axios.post(`${BASEURL}${endpoint}`, data, {headers});
 }
+
+export const stream = async (endpoint, body, headers) => {
+    const response = await fetch(`${BASEURL}${endpoint}`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers
+    });
+
+    if (!response.ok) throw new Error(await response.text());
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    return new ReadableStream({
+        async start(controller) {
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) {
+                    controller.close();
+                    break;
+                }
+                controller.enqueue(decoder.decode(value, { stream: true }));
+            }
+        }
+    });
+};
