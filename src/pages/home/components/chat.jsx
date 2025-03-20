@@ -46,13 +46,13 @@ const Chat = () => {
 
 
   return (
-    <div className="bg-gradient-to-b from-black to-gray-900 text-white min-h-screen flex items-center justify-center">
-      <div className="text-center max-w-2xl">
-        <img src={state.bannerImageUrl} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" />
-        <h1 className="text-2xl font-semibold mb-6">{state?.name}</h1>
+    <div className="bg-themeblack text-white min-h-screen items-center justify-center">
+      <div className="text-center">
+        {/* <img src={state.bannerImageUrl} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
+        {/* <h1 className="text-2xl font-semibold mb-6">{state?.name}</h1> */}
 
          {/* Chat Display Area */}
-        <div className="border border-yellow-500 p-4 rounded-lg max-w-lg mx-auto mb-4 h-64 overflow-y-auto bg-gray-800">
+        <div className="border border-yellow-500 p-4 rounded-lg max-w-lg mx-auto mb-4 h-64 overflow-y-auto">
           {messages.length === 0 ? (
             <p className="text-gray-400">No messages yet...</p>
           ) : (
@@ -61,7 +61,7 @@ const Chat = () => {
                 key={index}
                 className={`mb-2 p-2 rounded-lg max-w-xs ${
                   msg.type === "question"
-                    ? "bg-yellow-500 text-black self-start" // Question (Left side)
+                    ? "bg-blue-800 text-black self-start" // Question (Left side)
                     : "bg-blue-500 text-white self-end" // Answer (Right side)
                 } flex w-fit`}
               >
