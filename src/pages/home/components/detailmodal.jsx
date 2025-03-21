@@ -19,7 +19,7 @@ const DetailModal = ({isOpen, onClose, data}) => {
             <img src={data.bannerImageUrl} alt="Modal Image" className="h-screen bg-cover bg-center relative" />
             <h2 className="text-xl font-semibold mb-4">{data.name}</h2>
             <p className="mb-4 px-4">{data.description}</p>
-            <button onClick={()=> navigate(`/chat/${data.id}`, {state: data})} className="bg-yellow-500 px-6 py-2 rounded-lg text-black hover:bg-yellow-600" >Go to profile</button>
+            <button onClick={()=> navigate(`/chat/${data.id}`, {state: data})} className="bg-yellow-500 px-6 py-2 rounded-lg text-black hover:bg-yellow-600" >Join Module</button>
           </div>
         </div>
     </div>
