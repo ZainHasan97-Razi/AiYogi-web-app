@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { moduleConverseStream } from "../home.api";
 import { v7 as uuidv7 } from 'uuid';
+import backgroundImage from "../../../assets/images/homebackground.png";
+import Navbar from "../components/navbar";
+
+
 
 
 const Chat = () => {
@@ -45,52 +49,73 @@ const Chat = () => {
   }, [converseMutation.data])
 
 
-  return (
-    <div className="bg-themeblack text-white min-h-screen items-center justify-center">
-      <div className="text-center">
-        {/* <img src={state.bannerImageUrl} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
-        {/* <h1 className="text-2xl font-semibold mb-6">{state?.name}</h1> */}
+  return (<>
+    <div className="bg-themeblack">
+      <div className="min-h-screen bg-cover bg-center relative pb-11" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <Navbar />
+        <div className="bg-black/70 backdrop-blur-md max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-20 pb-11">
+            {/* <img src={state.bannerImageUrl} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
+            <img src={backgroundImage} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" />
+            <h2 className="text-textwhite text-center text-4xl font-bold mb-6">{state?.name || 'your hero journey'}</h2>
+            {/* <h2 className="text-textwhite text-center text-4xl font-bold mb-6">your hero journey</h2> */}
+            <div className="grid grid-cols-2 gap-4 mb-20 overflow-y-auto">
+              {messages.length === 0 ? (
+                <p className="text-gray-400">No messages yet...</p>
+              ) : (
+                messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 ${
+                      msg.type === "question"
+                        ? "border border-yellow-500 text-yellow-500 rounded-[1vw] self-start" // Question (Left side)
+                        : "bg-black text-white self-end" // Answer (Right side)
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                ))
+              )}
+            </div>
 
-         {/* Chat Display Area */}
-        <div className="border border-yellow-500 p-4 rounded-lg max-w-lg mx-auto mb-4 h-64 overflow-y-auto">
-          {messages.length === 0 ? (
-            <p className="text-gray-400">No messages yet...</p>
-          ) : (
-            messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`mb-2 p-2 rounded-lg max-w-xs ${
-                  msg.type === "question"
-                    ? "bg-blue-800 text-black self-start" // Question (Left side)
-                    : "bg-blue-500 text-white self-end" // Answer (Right side)
-                } flex w-fit`}
-              >
-                {msg.text}
+            <div className="flex items-center flex-nowrap gap-4 mx-auto mb-4">
+              <div class="flex items-center bg-transparent border border-yellow-500 text-yellow-500 w-full
+              rounded-[1vw] pl-4 pr-2 py-2">
+                <div class="shrink-0 select-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="19" viewBox="0 0 16 19" fill="none">
+                    <path d="M2.50817 0.877014C2.03449 0.877014 1.58022 1.06518 1.24528 1.40012C0.910335 1.73506 0.722168 2.18934 0.722168 2.66301V16.951C0.722168 17.4247 0.910335 17.879 1.24528 18.2139C1.58022 18.5488 2.03449 18.737 2.50817 18.737H13.2242C13.6978 18.737 14.1521 18.5488 14.4871 18.2139C14.822 17.879 15.0102 17.4247 15.0102 16.951V6.23501L9.65217 0.877014H2.50817ZM2.50817 2.66301H8.75917V7.12801H13.2242V16.951H2.50817V2.66301ZM4.29417 9.80701V11.593H11.4382V9.80701H4.29417ZM4.29417 13.379V15.165H8.75917V13.379H4.29417Z" fill="#F6B60B"/>
+                  </svg>
+                </div>
+                <input
+                  onChange={(e)=> setInput(e.target.value)}
+                  type="text"
+                  value={input || ""}
+                  placeholder="Enter questions"
+                  class="block bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
+                />
               </div>
-            ))
-          )}
+              <button 
+                disabled={converseMutation.isPending}
+                onClick={()=> onConverStart()}
+                className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 whitespace-nowrap font-semibold" 
+              >
+                {converseMutation.isPending ? (
+                  <div className="animate-spin border-t-2 border-b-2 border-gray-900 rounded-full w-5 h-5"></div>
+                ) : (
+                  <div className="flex items-center flex-nowrap gap-2">
+                    Submit
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                    <path d="M0.873291 6.20199V7.98799H11.5893L6.67779 12.8995L7.94585 14.1676L15.0184 7.09499L7.94585 0.0224304L6.67779 1.29049L11.5893 6.20199H0.873291Z" fill="black"/>
+                    </svg>
+                  </div>
+                )}
+              </button>
+            </div>
+          </div>
         </div>
-        
-        
-        <div className="flex items-center border border-yellow-500 p-3 rounded-lg max-w-lg mx-auto mb-4">
-          <input 
-            onChange={(e)=> setInput(e.target.value)}
-            type="text"
-            value={input || ""}
-            placeholder="Enter questions" 
-            className="bg-transparent w-full outline-none text-white" 
-          />
-        </div>
-        <button disabled={converseMutation.isPending} onClick={()=> onConverStart()} className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-200">
-        {converseMutation.isPending ? (
-            <div className="animate-spin border-t-2 border-b-2 border-gray-900 rounded-full w-5 h-5"></div>
-          ) : (
-            "Submit →"
-          )}
-        </button>
       </div>
     </div>
-  );
+  </>);
 };
 
 export default Chat;

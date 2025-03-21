@@ -1,3 +1,20 @@
+
+
+
+
+
+
+
+/* Page dark Content Start */
+.dark-page-content {
+    /* background-color: #000000b3; */
+}
+/* Page dark Content End */
+
+
+
+
+/* Head Slider Start */
 .head-slide-list {
     display: flex;
     align-items: center;
@@ -32,4 +49,13 @@
     border-radius: 30px;
     box-shadow: 0px 14px 94px 0px #FFFFFFE5;
 }
-
+/* Modal */
+.head-slide-modal-body {
+    color: #fff;
+    border-radius: 15px;
+}
+.head-slide-modal-body img {
+    height: auto;
+    margin-bottom: 15px;
+}
+/* Head Slider End */
