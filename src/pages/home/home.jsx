@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import ScrollingAvatars from "./components/scrollingAvatars";
 import Feature from "./components/Feature";
 import Advantages from "./components/Advantages";
+import NoteVideo from "./components/noteVideo";
 import BeginnerPath from "./components/BeginnerPath";
 
 import { useQuery } from "@tanstack/react-query";
@@ -42,14 +43,19 @@ const Home = () => {
       >
         <Navbar />
         <ScrollingAvatars data={trendingData?.data?.modules || []} callback={onClickItem} />
-
         <DetailModal isOpen={openModal} onClose={setOpenModal} data={onSelected}/>
       </div>
 
       {/* Other Components */}
+      <div className="text-white pt-20">
+        <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+          <Feature />
+          <Advantages />
+          <NoteVideo />
+        </div>
+      </div>
+
       <div className="p-8 pt-20">
-        <Feature />
-        <Advantages />
         <BeginnerPath data={moduleFeaturedData?.data?.modules || []} callback={onClickItem}/>
         {/* Add more components here */}
       </div>
