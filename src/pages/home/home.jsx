@@ -52,11 +52,11 @@ const Home = () => {
           <Feature />
           <Advantages />
           <NoteVideo />
+          <BeginnerPath data={moduleFeaturedData?.data?.modules || []} callback={onClickItem}/>
         </div>
       </div>
 
       <div className="p-8 pt-20">
-        <BeginnerPath data={moduleFeaturedData?.data?.modules || []} callback={onClickItem}/>
         {/* Add more components here */}
       </div>
 

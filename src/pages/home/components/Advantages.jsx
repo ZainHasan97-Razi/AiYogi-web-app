@@ -5,7 +5,7 @@ import feature3 from '../../../assets/images/feature-35937.png'
 const Advantages = () => {
   return (<>
     {/* First Section */}
-    <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
+    <div className="flex flex-row flex-wrap-reverse md:flex-nowrap gap-4 items-center mb-4">
       <div className="md:w-1/2">
         <h3 className="text-textred uppercase text-sm font-medium tracking-[2px]">Advantages</h3>
         <h2 className="text-textwhite text-4xl font-bold mb-6">Customize According To You</h2>

@@ -18,16 +18,9 @@
 
 
 
-
-
-/* Page dark Content Start */
-.dark-page-content {
-    /* background-color: #000000b3; */
+.head-slide-lists {
+    padding: 85px 0;
 }
-/* Page dark Content End */
-
-
-
 
 /* Head Slider Start */
 .head-slide-list {
@@ -57,7 +50,7 @@
     flex: 0.85;
     height: 90%;
 }
-.head-slide-list .head-slide-item img {
+.head-slide-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -74,3 +67,116 @@
     margin-bottom: 15px;
 }
 /* Head Slider End */
+
+
+
+
+
+
+
+
+
+
+/* Custom Carousel 1 Start */
+#custom-carousel {
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+#custom-carousel.noselect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#custom-carousel .arrow {
+    position: absolute;
+    bottom: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: #228291;
+    line-height: 30px;
+    z-index: 1000;
+}
+#custom-carousel .arrow svg {
+    width: 50%;
+    height: auto;
+}
+#custom-carousel .arrow-left {
+    left: 0px;
+}
+#custom-carousel .arrow-right {
+    right: 0px;
+}
+
+#custom-carousel > *:not(.arrow) {
+    width: 100%;
+    height: 100%;
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+}
+#custom-carousel .item {
+    text-align: center;
+    position: absolute;
+    transition: height 1s, width 1s, left 1s, margin-top 1s, line-height 1s, background-color 1s;
+}
+#custom-carousel .custom-carousel-item {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#custom-carousel .custom-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0px 14px 94px 0px #FFFFFFE5;
+}
+/* #custom-carousel > *:not(.arrow) > .level-2 .custom-carousel-item img {
+    box-shadow: 0px 14px 94px 0px #FFFFFFE5;
+} */
+/* #custom-carousel > *:not(.arrow) .level2:first-child .custom-carousel-item img {
+    box-shadow: 0px 14px 94px 0px #FFFFFFE5;
+} */
+  
+#custom-carousel .level-2, #custom-carousel .level2 {
+    height: 70%;
+    width: 14%;
+    z-index: 1;
+}
+#custom-carousel .level2 {
+    left: 3%;
+}
+#custom-carousel .level-2 {
+    left: 83%;
+}
+
+
+#custom-carousel .level-1, #custom-carousel .level1 {
+    height: 85%;
+    width: 17%;
+    z-index: 2;
+}
+#custom-carousel .level-1 {
+    left: 64%;
+}
+#custom-carousel .level1 {
+    left: 19%;
+}
+#custom-carousel .level0 {
+    height: 100%;
+    width: 22%;
+    left: 39%;
+}
+/* Custom Carousel 1 End */
