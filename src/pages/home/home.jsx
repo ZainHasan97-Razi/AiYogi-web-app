@@ -10,6 +10,7 @@ import BeginnerPath from "./components/BeginnerPath";
 import { useQuery } from "@tanstack/react-query";
 import { moduleTending, moduleFeatured } from "./home.api";
 import DetailModal from "./components/detailmodal";
+import { SearchComponent } from "./components/Search";
 
 const Home = () => {
 
@@ -42,6 +43,7 @@ const Home = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
+        <SearchComponent/>
         <ScrollingAvatars data={trendingData?.data?.modules || []} callback={onClickItem} />
         <DetailModal isOpen={openModal} onClose={setOpenModal} data={onSelected}/>
       </div>
