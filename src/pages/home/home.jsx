@@ -8,7 +8,7 @@ import NoteVideo from "./components/noteVideo";
 import BeginnerPath from "./components/BeginnerPath";
 
 import { useQuery } from "@tanstack/react-query";
-import { moduleTending, moduleFeatured } from "./home.api";
+import { moduleTending, moduleFeatured, moduleSearch } from "./home.api";
 import DetailModal from "./components/detailmodal";
 import { SearchComponent } from "./components/Search";
 
@@ -16,11 +16,26 @@ const Home = () => {
 
   const [onSelected, setOnSelected] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+  const [search, setSearch] = useState('');
 
   const { isPending, isError, data: trendingData, error } = useQuery({
     queryKey: ['moduleTending'],
     queryFn: moduleTending,
   })
+
+  const {data: searchData, error: searchError, refetch} = useQuery({
+    queryKey: ['search', search],
+    queryFn: async () => {
+      const payload = {
+        searchTerm: search
+      }
+      const data = await moduleSearch(payload)
+      return data
+    },
+    enabled: false
+  }
+    // ["search", searchInput], moduleSearch(searchInput) , {enabled : false}
+    );
 
   const { data: moduleFeaturedData } = useQuery({
     queryKey: ['moduleFeatured'],
@@ -33,7 +48,10 @@ const Home = () => {
     // console.log(item, 'selected items');
   }
 
-  // console.log(moduleFeaturedData?.data);
+  const onSearch = () => {
+    refetch()
+  }
+
 
   return (
     <div className="bg-themeblack">
@@ -43,8 +61,8 @@ const Home = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
-        <SearchComponent/>
-        <ScrollingAvatars data={trendingData?.data?.modules || []} callback={onClickItem} />
+        <SearchComponent setSearch={setSearch} onclick={onSearch} />
+        <ScrollingAvatars data={searchData?.data.modules ? searchData.data.modules : trendingData?.data?.modules || []} callback={onClickItem} />
         <DetailModal isOpen={openModal} onClose={setOpenModal} data={onSelected}/>
       </div>
 
