@@ -116,7 +116,7 @@ const Advantages = () => {
       </div>
       <div className="md:w-1/2">
         <h3 className="text-textred uppercase text-sm font-medium tracking-[2px]">advatnages</h3>
-        <h2 className="text-textwhite text-4xl font-bold mb-6">Join module</h2>
+        <h2 className="text-textwhite text-4xl font-bold mb-6">Join</h2>
         <ul>
           <li className='mb-5'>
               <h4 className="text-lg text-white font-semibold flex items-center gap-2 mb-2">
