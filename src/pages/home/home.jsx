@@ -57,7 +57,7 @@ const Home = () => {
     <div className="bg-themeblack">
       {/* Background Image Section */}
       <div
-        className="h-screen bg-cover bg-center relative mb-20"
+        className="home-banner bg-cover bg-center relative"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />

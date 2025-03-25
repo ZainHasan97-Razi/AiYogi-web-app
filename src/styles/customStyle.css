@@ -1,3 +1,15 @@
+.home-banner {
+    height: calc(100vh - 100px);
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-banner > *:last-child {
+    margin-bottom: -100px;
+}
+
 
 .videowrapper {
     float: none;
@@ -18,9 +30,9 @@
 
 
 
-.head-slide-lists {
+/* .head-slide-lists {
     padding: 85px 0;
-}
+} */
 
 /* Head Slider Start */
 .head-slide-list {
