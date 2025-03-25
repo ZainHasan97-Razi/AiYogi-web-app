@@ -1,4 +1,5 @@
 import { useState } from "react";
+import searchIcon from "../../../assets/images/search_vector.png";
 
 export const SearchComponent = ({ setSearch, onclick }) => {
   const onSearch = (searchValue) => {
@@ -8,6 +9,8 @@ export const SearchComponent = ({ setSearch, onclick }) => {
   return (
     <div className="relative h-screen  flex items-center justify-center">
       <div className="relative bg-black/80 p-6 rounded-2xl flex items-center w-full min-w-[60vw] max-w-3xl">
+        
+        
         <input
           onChange={(e) => onSearch(e.target.value)}
           type="text"
@@ -16,9 +19,12 @@ export const SearchComponent = ({ setSearch, onclick }) => {
         />
         <button
           onClick={() => onclick()}
-          className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-100 transition-colors font-medium"
+          className="bg-white text-black py-2 px-2 rounded-full hover:bg-gray-100 transition-colors font-medium"
         >
-          Find Answers →
+          
+          <span className="hidden sm:block">Find Answers →</span> {/* Hidden on small screens */}
+          <img className="sm:hidden" src={searchIcon}></img>
+          
         </button>
       </div>
     </div>
