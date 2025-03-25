@@ -57,7 +57,7 @@ const Home = () => {
     <div className="bg-themeblack">
       {/* Background Image Section */}
       <div
-        className="h-screen bg-cover bg-center relative mb-20"
+        className="h-[80vh] bg-cover bg-center relative flex flex-col justify-center items-center mb-20"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
@@ -67,7 +67,7 @@ const Home = () => {
       </div>
 
       {/* Other Components */}
-      <div className="text-white pt-20">
+      <div className="text-white">
         <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <Feature />
           <Advantages />
