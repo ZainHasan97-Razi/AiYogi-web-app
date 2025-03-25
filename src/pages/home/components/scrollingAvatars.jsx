@@ -165,7 +165,7 @@ const ScrollingAvatars = ({data=[], callback}) => {
     };
 
   return (<>
-    {/* <div className="absolute bottom-0 left-0 right-0 translate-y-1/2"> */}
+    <div className="absolute bottom-0 left-0 right-0 translate-y-1/2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* <div className="head-slide-list">
           {data.map((item, index) => (item?.bannerImageUrl ? 
@@ -187,7 +187,7 @@ const ScrollingAvatars = ({data=[], callback}) => {
 
         <div
           ref={containerRef}
-          className="head-slide-lists flex overflow-x-auto scrollbar-hide"
+          className="head-slide-lists flex overflow-x-auto scrollbar-hide py-20"
           onScroll={handleScroll}
         >
           {data.map((item, index) => {
@@ -226,7 +226,7 @@ const ScrollingAvatars = ({data=[], callback}) => {
           })}
         </div>
       </div>
-    {/* </div> */}
+    </div>
   </>);
 };
 
