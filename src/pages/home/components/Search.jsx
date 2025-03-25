@@ -6,8 +6,8 @@ export const SearchComponent = ({ setSearch, onclick }) => {
   };
 
   return (
-    <div className="relative h-screen flex items-center justify-center">
-      <div className="relative bg-black/80 p-6 rounded-2xl flex items-center space-x-4 w-full min-w-[60vw] max-w-3xl">
+    <div className="relative h-screen  flex items-center justify-center">
+      <div className="relative bg-black/80 p-6 rounded-2xl flex items-center w-full min-w-[60vw] max-w-3xl">
         <input
           onChange={(e) => onSearch(e.target.value)}
           type="text"

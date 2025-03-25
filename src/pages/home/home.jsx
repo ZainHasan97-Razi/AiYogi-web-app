@@ -54,10 +54,10 @@ const Home = () => {
 
 
   return (
-    <div className="bg-themeblack">
+    <div className="bg-themeblack w-full min-h-screen">
       {/* Background Image Section */}
       <div
-        className="h-[80vh] bg-cover bg-center relative flex flex-col justify-center items-center mb-20"
+        className="h-[80vh] bg-cover bg-center relative flex flex-col justify-center items-center mb-20 w-full"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
