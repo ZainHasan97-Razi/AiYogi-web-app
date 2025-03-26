@@ -1,3 +1,4 @@
+import { useAnimation } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
 
 const dummyData = [
@@ -9,6 +10,8 @@ const dummyData = [
 
 const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+    // const [centerIndex, setCenterIndex] = useState(Math.floor(data.length / 2));
+  
   const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef(null);
 
@@ -23,20 +26,48 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleScroll = () => {
+  const scrollToCenter = (index) => {
     if (containerRef.current) {
-      const scrollLeft = containerRef.current.scrollLeft;
-      setScrollPosition(scrollLeft);
+      const selectedItem = containerRef.current.children[index];
+      if (!selectedItem) return;
+  
+      const itemWidth = selectedItem.offsetWidth;
+      const itemOffsetLeft = selectedItem.offsetLeft;
+      const screenWidth = window.innerWidth;
+  
+      // Calculate the scrollLeft to center the selected image
+      const scrollLeft = itemOffsetLeft - (screenWidth / 2) + (itemWidth / 2);
+  
+      containerRef.current.scrollTo({ left: scrollLeft, behavior: "smooth" });
     }
   };
 
-  const scrollToCenter = (index) => {
+  const handleScroll = () => {
     if (containerRef.current) {
-      const itemWidth = 180 + 16; // item width + margin
-      const scrollTo = index * itemWidth - (containerWidth / 2 - itemWidth / 2);
-      containerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+      const scrollLeft = containerRef.current.scrollLeft;
+      // const itemWidth = containerRef.current.children[0]?.offsetWidth || 180;
+      // const containerWidth = containerRef.current.offsetWidth;
+      // Calculate the closest item to the center
+      // const centerIndex = Math.round((scrollLeft + containerWidth / 2) / itemWidth);
+      setScrollPosition(scrollLeft);
+      // setCenterIndex(centerIndex);
     }
   };
+  
+
+
+
+  // useEffect(() => {
+  //   scrollToCenter(centerIndex);
+  // }, [centerIndex]);
+
+  // const scrollToCenter = (index) => {
+  //   if (containerRef.current) {
+  //     const itemWidth = 180 + 16; // item width + margin
+  //     const scrollTo = index * itemWidth - (containerWidth / 2 - itemWidth / 2);
+  //     containerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <div className="absolute bottom-0 left-0 right-0 translate-y-1/2">
@@ -47,7 +78,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
           onScroll={handleScroll}
         >
           {data.map((item, index) => {
-            const itemWidth = 180;
+            const itemWidth = containerRef?.current?.children[0]?.offsetWidth || 180;
             const itemOffset = index * (itemWidth + 16);
             const containerCenter = containerWidth / 2;
             const distanceFromCenter = Math.abs(
@@ -62,7 +93,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
             );
 
             const isActive = distanceFromCenter < itemWidth / 2;
-
+            
             return (
               <div
                 key={index}
@@ -88,3 +119,5 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
 };
 
 export default ScrollingAvatars;
+
+
