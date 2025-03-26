@@ -58,7 +58,7 @@ const Chat = () => {
       >
         <Navbar />
         <div className=" mt-3 bg-black/70 backdrop-blur-md w-[90vw] h-[80vh] rounded-xl flex flex-col justify-center items-center">
-          <div className="grid justify-between w-[80%] h-[80%]">
+          <div className="grid w-[80%] h-[80%]">
           {/* <img src={backgroundImage} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
           {/* <h2 className="text-textwhite text-center text-4xl font-bold mb-6">{state?.name || 'your hero journey'}</h2> */}
 
