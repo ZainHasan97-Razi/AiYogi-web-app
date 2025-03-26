@@ -50,15 +50,74 @@ const Chat = () => {
 
 
   return (<>
-    <div className="bg-themeblack">
-      <div className="min-h-screen bg-cover bg-center relative pb-11" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="bg-themeblack w-full min-h-screen">
+      {/* Background Image Section */}
+      <div
+        className="min-h-screen bg-cover bg-center relative flex flex-col justify-center items-center w-full"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
         <Navbar />
-        <div className="bg-black/70 backdrop-blur-md max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-20 pb-11">
-            {/* <img src={state.bannerImageUrl} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
+        <div className=" mt-3 bg-black/70 backdrop-blur-md w-[90vw] h-[80vh] rounded-xl flex flex-col justify-center items-center">
+          <div className="grid justify-between w-[80%] h-[80%]">
+          {/* <img src={backgroundImage} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
+          {/* <h2 className="text-textwhite text-center text-4xl font-bold mb-6">{state?.name || 'your hero journey'}</h2> */}
+
+          {/* <div class="grid h-64 bg-gray-200 p-4">
+  <div>Content Above</div>
+  <div class="self-end bg-blue-500 p-4 text-white">Fixed at Bottom</div>
+</div> */}
+          {/* <div className="grid grid-cols-2 gap-4 mb-20 overflow-y-auto"> */}
+          <div className="overflow-y-auto scrollbar-hide">
+              {messages.length === 0 ? (
+                <p className="text-gray-400">No messages yet...</p>
+              ) : (
+                messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={` p-1 ${
+                      msg.type === "question"
+                        ? "border border-yellow-500 text-yellow-500 rounded-[1vw] self-start" // Question (Left side)
+                        : "backdrop-blur-sm mt-3 mb-3 text-white self-end rounded-[1vw]" // Answer (Right side)
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                ))
+              )}
+            </div>
+
+          <div className="mt-auto flex justify-evenly p-2">
+          <input
+                  onChange={(e)=> setInput(e.target.value)}
+                  type="text"
+                  value={input || ""}
+                  placeholder="Enter questions"
+                  class="block bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
+                />
+             <button 
+                disabled={converseMutation.isPending}
+                onClick={()=> onConverStart()}
+                className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 whitespace-nowrap font-semibold" 
+              >
+                {converseMutation.isPending ? (
+                  <div className="animate-spin border-t-2 border-b-2 border-gray-900 rounded-full w-5 h-5"></div>
+                ) : (
+                  <div className="flex items-center flex-nowrap gap-2">
+                    Submit
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                    <path d="M0.873291 6.20199V7.98799H11.5893L6.67779 12.8995L7.94585 14.1676L15.0184 7.09499L7.94585 0.0224304L6.67779 1.29049L11.5893 6.20199H0.873291Z" fill="black"/>
+                    </svg>
+                  </div>
+                )}
+              </button>    
+
+              </div>
+          </div>
+        </div>
+        {/* <div className="bg-black/70 backdrop-blur-md  w-[90vh]">
+          <div className=" px-4 sm:px-6 lg:px-8  pb-11">
             <img src={backgroundImage} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" />
             <h2 className="text-textwhite text-center text-4xl font-bold mb-6">{state?.name || 'your hero journey'}</h2>
-            {/* <h2 className="text-textwhite text-center text-4xl font-bold mb-6">your hero journey</h2> */}
             <div className="grid grid-cols-2 gap-4 mb-20 overflow-y-auto">
               {messages.length === 0 ? (
                 <p className="text-gray-400">No messages yet...</p>
@@ -112,7 +171,7 @@ const Chat = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </>);

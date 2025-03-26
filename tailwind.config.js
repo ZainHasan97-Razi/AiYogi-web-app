@@ -14,7 +14,8 @@ module.exports = {
         dark: "#343a40",
         themeblack: "#000000",
         textred: "#FF5555",
-        textwhite: "#F8F8F8"
+        textwhite: "#F8F8F8",
+        selectedborder: "#F6B60B"
       },
     },
   },

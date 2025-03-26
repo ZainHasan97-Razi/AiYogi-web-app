@@ -97,7 +97,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
             return (
               <div
                 key={index}
-                className={`head-slide-item flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 ${isActive ? 'border-4 border-blue-100/50' : ''}`}
+                className={`head-slide-item flex-shrink-0 w-40 h-40 m-2 cursor-pointer hover:opacity-80 transition-transform duration-200 ${isActive ? 'border-4 border-selectedborder' : ''}`}
                 style={{ transform: `scale(${scale})` }}
                 onClick={() => {
                   callback(item);
@@ -107,7 +107,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
                 <img
                   src={item.bannerImageUrl || item.img}
                   alt={`Avatar ${index}`}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover"
                 />
               </div>
             );
