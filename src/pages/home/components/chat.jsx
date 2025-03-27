@@ -58,7 +58,7 @@ const Chat = () => {
       >
         <Navbar />
         <div className=" mt-3 bg-black/70 backdrop-blur-md w-[90vw] h-[80vh] rounded-xl flex flex-col justify-center items-center">
-          <div className="grid w-[80%] h-[80%]">
+          <div className="grid md:w-[50%] md:h-[50%] w-[80%] h-[80%]">
           {/* <img src={backgroundImage} alt="Hero Journey" className="mx-auto w-20 h-20 mb-4" /> */}
           {/* <h2 className="text-textwhite text-center text-4xl font-bold mb-6">{state?.name || 'your hero journey'}</h2> */}
 
@@ -69,7 +69,7 @@ const Chat = () => {
           {/* <div className="grid grid-cols-2 gap-4 mb-20 overflow-y-auto"> */}
           <div className="overflow-y-auto scrollbar-hide">
               {messages.length === 0 ? (
-                <p className="text-gray-400">No messages yet...</p>
+                <p className="text-gray-400 m-auto text-center mt-28">No messages yet...</p>
               ) : (
                 messages.map((msg, index) => (
                   <div
@@ -77,7 +77,7 @@ const Chat = () => {
                     className={` p-1 ${
                       msg.type === "question"
                         ? "border border-yellow-500 text-yellow-500 rounded-[1vw] self-start" // Question (Left side)
-                        : "backdrop-blur-sm mt-3 mb-3 text-white self-end rounded-[1vw]" // Answer (Right side)
+                        : "bg-[#71717914] backdrop-blur-[145px] mt-3 mb-3 text-white self-end rounded-[1vw]" // Answer (Right side)
                     }`}
                   >
                     {msg.text}
@@ -92,21 +92,18 @@ const Chat = () => {
                   type="text"
                   value={input || ""}
                   placeholder="Enter questions"
-                  class="block bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
+                  class=" border mr-1 border-yellow-500 bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
                 />
              <button 
-                disabled={converseMutation.isPending}
+                disabled={converseMutation.isPending || input == "" ? true : false }
                 onClick={()=> onConverStart()}
-                className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 whitespace-nowrap font-semibold" 
+                className="bg-white text-black rounded-full hover:bg-gray-200 whitespace-nowrap font-semibold" 
               >
                 {converseMutation.isPending ? (
                   <div className="animate-spin border-t-2 border-b-2 border-gray-900 rounded-full w-5 h-5"></div>
                 ) : (
                   <div className="flex items-center flex-nowrap gap-2">
-                    Submit
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                    <path d="M0.873291 6.20199V7.98799H11.5893L6.67779 12.8995L7.94585 14.1676L15.0184 7.09499L7.94585 0.0224304L6.67779 1.29049L11.5893 6.20199H0.873291Z" fill="black"/>
-                    </svg>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-2xl"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.1918 8.90615C15.6381 8.45983 16.3618 8.45983 16.8081 8.90615L21.9509 14.049C22.3972 14.4953 22.3972 15.2189 21.9509 15.6652C21.5046 16.1116 20.781 16.1116 20.3347 15.6652L17.1428 12.4734V22.2857C17.1428 22.9169 16.6311 23.4286 15.9999 23.4286C15.3688 23.4286 14.8571 22.9169 14.8571 22.2857V12.4734L11.6652 15.6652C11.2189 16.1116 10.4953 16.1116 10.049 15.6652C9.60265 15.2189 9.60265 14.4953 10.049 14.049L15.1918 8.90615Z" fill="currentColor"></path></svg>
                   </div>
                 )}
               </button>    
