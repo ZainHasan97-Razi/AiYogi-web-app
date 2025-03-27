@@ -74,7 +74,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={containerRef}
-          className="head-slide-lists flex overflow-x-auto scrollbar-hide py-20"
+          className="head-slide-lists flex overflow-x-auto scrollbar-hide py-20 gap-2"
           onScroll={handleScroll}
         >
           {data.map((item, index) => {
@@ -107,7 +107,7 @@ const ScrollingAvatars = ({ data = dummyData, callback = () => {} }) => {
                 <img
                   src={item.bannerImageUrl || item.img}
                   alt={`Avatar ${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover shadow-2xl shadow-white/90"
                 />
               </div>
             );
