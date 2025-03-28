@@ -26,11 +26,44 @@ export const moduleConverse = (data) => {
    return post(`/${ENDPOINTS.public_converse}`, data)
 }
 
+
+
+export const fetchStreamData = async (payload, setData) => {
+
+   const  headers = {
+      Accept: 'text/event-stream',
+      'Cache-Control': 'no-cache',
+    }
+
+    const response = await stream(`/${ENDPOINTS.public_converse}`, payload, headers);
+    if (!response.ok) {
+     throw new Error(await response.text());
+   }
+
+   if (!response.ok) {
+     throw new Error(await response.text());
+   }
+
+   const reader = response.body.getReader();
+   const decoder = new TextDecoder();
+   
+   let result = '';
+ 
+   while (true) {
+     const { done, value } = await reader.read();
+     if (done) break;
+     result += decoder.decode(value, { stream: true });
+     setData(result); // Update state with the latest result
+   }
+   return result;
+ };
+
 export const moduleConverseStream = async (payload) => {
   const  headers = {
       Accept: 'text/event-stream',
       'Cache-Control': 'no-cache',
     }
+    
    const responseStream = await stream(`/${ENDPOINTS.public_converse}`, payload, headers);
    const reader = responseStream.getReader();
 

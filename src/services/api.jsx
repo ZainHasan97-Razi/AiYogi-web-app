@@ -10,27 +10,28 @@ export const post = (endpoint, data, headers) => {
 }
 
 export const stream = async (endpoint, body, headers) => {
-    const response = await fetch(`${BASEURL}${endpoint}`, {
+    return await fetch(`${BASEURL}${endpoint}`, {
         method: "POST",
         body: JSON.stringify(body),
         headers
     });
 
-    if (!response.ok) throw new Error(await response.text());
+    // if (!response.ok) throw new Error(await response.text());
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+    // const reader = response.body.getReader();
+    // const decoder = new TextDecoder();
 
-    return new ReadableStream({
-        async start(controller) {
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) {
-                    controller.close();
-                    break;
-                }
-                controller.enqueue(decoder.decode(value, { stream: true }));
-            }
-        }
-    });
+    // return new ReadableStream({
+    //     async start(controller) {
+    //         while (true) {
+    //             const { done, value } = await reader.read();
+    //             if (done) {
+    //                 controller.close();
+    //                 break;
+    //             }
+    //             console.log("Chunk received:", value); // Stream updates in real time   
+    //             controller.enqueue(decoder.decode(value, { stream: true }));
+    //         }
+    //     }
+    // });
 };
