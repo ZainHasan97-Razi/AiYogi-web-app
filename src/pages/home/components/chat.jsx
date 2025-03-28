@@ -5,8 +5,8 @@ import { fetchStreamData, moduleConverseStream } from "../home.api";
 import { v7 as uuidv7 } from 'uuid';
 import backgroundImage from "../../../assets/images/homebackground.png";
 import Navbar from "../components/navbar";
-
-
+import userAvatar from "../../../assets/images/avatar.png";
+import ansvector from "../../../assets/images/ans_vector.png";
 
 
 const Chat = () => {
@@ -89,6 +89,8 @@ const Chat = () => {
                 <p className="text-gray-400 m-auto text-center mt-28">No messages yet...</p>
               ) : (
                 messages.map((msg, index) => (
+                  <>
+                  <img src={msg.type == "question" ? userAvatar: ansvector} className={`absolute ${msg.type == "question" ? 'translate-x-[-40px]': 'translate-x-[-40px] translate-y-3'} border border-yellow-500 text-white w-8 h-8 rounded-full object-cover " alt="User Avatar`} />
                   <div
                     key={index}
                     className={` p-1 ${
@@ -99,6 +101,7 @@ const Chat = () => {
                   >
                     {msg.text}
                   </div>
+                  </>
                 ))
               )}
             </div>
