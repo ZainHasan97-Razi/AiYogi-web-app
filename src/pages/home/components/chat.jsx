@@ -90,7 +90,7 @@ const Chat = () => {
               ) : (
                 messages.map((msg, index) => (
                   <>
-                  
+
                   {/* <img src={msg.type == "question" ? userAvatar: ansvector} className={`absolute ${msg.type == "question" ? 'translate-x-[-40px]': 'translate-x-[-40px] translate-y-3'} border border-yellow-500 text-white w-8 h-8 rounded-full object-cover " alt="User Avatar`} /> */}
                   <div
                     key={index}
@@ -100,7 +100,11 @@ const Chat = () => {
                         : "bg-[#71717914] backdrop-blur-[145px] mt-3 mb-3 text-white self-end rounded-[1vw]" // Answer (Right side)
                     }`}
                   >
-                    {msg.text}
+                    {msg.text == "" ? (
+                        <div class="loader"></div>
+                    ) : 
+                      msg.text
+                    }
                   </div>
                   </>
                 ))
