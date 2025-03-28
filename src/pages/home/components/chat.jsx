@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchStreamData, moduleConverseStream } from "../home.api";
 import { v7 as uuidv7 } from 'uuid';
@@ -16,6 +16,7 @@ const Chat = () => {
   const [fetching, setFetching] = useState(false);
   const [threadId, setThreadId] = useState(uuidv7());
   const [messages, setMessages] = useState([]);
+  const scrollableRef = useRef(null);
 
   const { refetch } = useQuery({
     queryKey: ['streamData'],
@@ -60,6 +61,9 @@ const Chat = () => {
         return updatedMessages;
       }); // Update last message
 
+      if (scrollableRef.current) {
+        scrollableRef.current.scrollTop = scrollableRef.current.scrollHeight;
+      }
       setInput("");
     }
 
@@ -84,7 +88,7 @@ const Chat = () => {
   <div class="self-end bg-blue-500 p-4 text-white">Fixed at Bottom</div>
 </div> */}
           {/* <div className="grid grid-cols-2 gap-4 mb-20 overflow-y-auto"> */}
-          <div className="overflow-y-auto scrollbar-hide">
+          <div ref={scrollableRef} className="overflow-y-auto scrollbar-hide">
               {messages.length === 0 ? (
                 <p className="text-gray-400 m-auto text-center mt-28">No messages yet...</p>
               ) : (
