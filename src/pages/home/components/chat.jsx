@@ -93,7 +93,7 @@ const Chat = () => {
 
                   {/* <img src={msg.type == "question" ? userAvatar: ansvector} className={`absolute ${msg.type == "question" ? 'translate-x-[-40px]': 'translate-x-[-40px] translate-y-3'} border border-yellow-500 text-white w-8 h-8 rounded-full object-cover " alt="User Avatar`} /> */}
                   <div
-                    key={index}
+                    key={msg?.id || index}
                     className={` p-1 ${
                       msg.type === "question"
                         ? "border border-yellow-500 text-yellow-500 rounded-[1vw] self-start" // Question (Left side)
@@ -112,14 +112,20 @@ const Chat = () => {
             </div>
 
           <div className="mt-auto flex justify-evenly p-2">
-          <input
-                  onChange={(e)=> setInput(e.target.value)}
-                  type="text"
-                  value={input || ""}
-                  placeholder="Enter questions"
-                  class=" border mr-1 border-yellow-500 bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
-                />
+              <input
+                onKeyUp={(e) => {
+                  if(e.key === "Enter") {
+                    onConverStart();
+                  }
+                }}
+                onChange={(e)=> setInput(e.target.value)}
+                type="text"
+                value={input || ""}
+                placeholder="Enter questions"
+                class=" border mr-1 border-yellow-500 bg-transparent grow pl-4 py-1 text-yellow-500 placeholder-yellow-500 placeholder-opacity-40 outline-none rounded-[1vw]"
+              />
              <button 
+                
                 disabled={fetching || input == "" ? true : false }
                 onClick={()=> onConverStart()}
                 className="bg-white text-black rounded-full hover:bg-gray-200 whitespace-nowrap font-semibold" 
