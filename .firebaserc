@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "aiyogi-preprod"
+    "default": "aiyogi-internal",
+    "dev": "aiyogi-internal",
+    "preprod": "aiyogi-preprod"
   }
 }
