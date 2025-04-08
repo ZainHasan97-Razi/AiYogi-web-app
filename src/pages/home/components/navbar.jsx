@@ -10,11 +10,10 @@ const Navbar = () => {
   };
 
   return (
-    // <nav className="bg-transparent absolute top-0 left-0 w-full z-10">
-    <nav className="bg-transparent w-full bg-red fixed top-0 left-0 z-50">
-      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-trasparent absolute w-full fixed top-0 left-0 z-50">
+      <div className="w-full flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={logo} alt="Logo" className="h-10 w-auto" /> {/* Adjust height as needed */}
+          <img src={logo} alt="Logo" className="h-10 w-auto" /> {/* Adjust height as needed */}
         </div>
 
         <button onClick={toggleMenu} data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded={isOpen}>
@@ -24,31 +23,58 @@ const Navbar = () => {
           </svg>
         </button>
 
-        <div class={`${isOpen ? 'block': 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
-        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900/20 dark:border-gray-700">
-          <li>
-            <a href="#" class="block py-2 px-3 text-light bg-black-700 rounded-sm md:bg-transparent md:p-0 dark:text-white  md:hover:text-blue-700" aria-current="page">About</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Videos</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Subscribe</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Work With Us</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Public Relations</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Blogs</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Mantak Chia</a>
-          </li>
-        </ul>
+        <div
+          className={`${
+            isOpen ? 'opacity-100 translate-y-2 scale-100' : 'opacity-0 pointer-events-none scale-95 -translate-y-2'
+          } transition-all duration-300 ease-out origin-top-right absolute right-4 top-full bg-black rounded-lg shadow-lg z-40 w-52 md:relative md:top-0 md:right-0 md:w-auto md:bg-transparent md:shadow-none md:opacity-100 md:pointer-events-auto md:translate-y-0 md:scale-100`}
+          id="navbar-default"
+        >
+          <ul className="flex flex-col md:flex-row md:space-x-10 space-y-3 md:space-y-0 p-4 md:p-0">
+            <li>
+              <a
+                href="#"
+                className="text-gray-100 hover:text-gray-300 font-light"
+                aria-current="page"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Videos
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Subscribe
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Work With Us
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Public Relations
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Blogs
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-100 hover:text-gray-300 font-light">
+                Mantak Chia
+              </a>
+            </li>
+          </ul>
         </div>
+
+        <button className={`bg-white text-black px-8 py-2 rounded-full font-medium hover:bg-gray-200' hidden md:block`}>
+          Try AI Yogi
+        </button>
       </div>
     </nav>
   );
